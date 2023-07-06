@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/ui">
+        <file>UI/login_back.jpg</file>
+    </qresource>
+</RCC>
