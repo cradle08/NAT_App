@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport
 
 CONFIG += c++17
 
@@ -11,15 +11,18 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     login.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    serialconfig.cpp
 
 HEADERS += \
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    serialconfig.h
 
 FORMS += \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    serialconfig.ui
 
 TRANSLATIONS += \
     NAT_zh_CN.ts

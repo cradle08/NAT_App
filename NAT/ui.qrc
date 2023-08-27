@@ -2,4 +2,25 @@
     <qresource prefix="/ui">
         <file>UI/login_back.jpg</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>icons/axis.ico</file>
+        <file>icons/calculator.ico</file>
+        <file>icons/down.ico</file>
+        <file>icons/download.ico</file>
+        <file>icons/global.ico</file>
+        <file>icons/graph.ico</file>
+        <file>icons/hand.ico</file>
+        <file>icons/mode.ico</file>
+        <file>icons/Move_Left.png</file>
+        <file>icons/Move_Right.png</file>
+        <file>icons/parameter.ico</file>
+        <file>icons/port.ico</file>
+        <file>icons/Rotate_Left.png</file>
+        <file>icons/Rotate_Right.png</file>
+        <file>icons/setting.ico</file>
+        <file>icons/settings.ico</file>
+        <file>icons/Stop.png</file>
+        <file>icons/sub_port.ico</file>
+        <file>icons/tmc_program.ico</file>
+    </qresource>
 </RCC>
