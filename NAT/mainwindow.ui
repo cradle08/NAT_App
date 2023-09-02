@@ -18,11 +18,11 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_Process">
        <attribute name="title">
-        <string>流程</string>
+        <string>样本分析</string>
        </attribute>
       </widget>
       <widget class="QWidget" name="tab_Data">
