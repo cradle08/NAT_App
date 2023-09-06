@@ -15,20 +15,6 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3">
-     <item>
-      <widget class="QLabel" name="label_Port">
-       <property name="text">
-        <string>端口：</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox_Port"/>
-     </item>
-    </layout>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3">
      <item>
       <widget class="QLabel" name="label_Baud">
@@ -99,18 +85,11 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,1">
+    <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1">
      <item>
-      <widget class="QPushButton" name="pushButton_Open">
+      <widget class="QPushButton" name="pushButton_Sure">
        <property name="text">
-        <string>打开</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Close">
-       <property name="text">
-        <string>关闭</string>
+        <string>确定</string>
        </property>
       </widget>
      </item>

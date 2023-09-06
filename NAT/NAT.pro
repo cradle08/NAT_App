@@ -12,11 +12,15 @@ SOURCES += \
     main.cpp \
     login.cpp \
     mainwindow.cpp \
+    serial_protocolmsg.cpp \
+    serial_toolbar.cpp \
     serialconfig.cpp
 
 HEADERS += \
     login.h \
     mainwindow.h \
+    serial_protocolmsg.h \
+    serial_toolbar.h \
     serialconfig.h
 
 FORMS += \

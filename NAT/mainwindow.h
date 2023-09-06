@@ -6,9 +6,13 @@
 #include <QMessageBox>
 #include <QtSerialPort>
 #include <QDebug>
+#include <QComboBox>
+#include <QPushButton>
+#include <QToolBar>
 
 
-#include "serialconfig.h"
+#include "serial_toolbar.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +23,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    enum {
+      EN_TAB_INDEX_Sample_Analysis  = 0,
+      EN_TAB_INDEX_ListReview,
+      EN_TAB_INDEX_QC,
+      EN_TAB_INDEX_Set,
+      EN_TAB_INDEX_Debug,
+    };
+
+
+public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -26,11 +40,46 @@ public:
     void Send_Serial_Data();
 
 
+
  public slots:
-    //打开串口参数设置界面
-    void Do_Action_Serial_Config();
-    //读取串口数据
-    void Do_Read_Serial_Data();
+//    //打开串口参数设置界面
+//    void on_Action_Serial_Config();
+     //处理串口接受消息
+     uint8_t on_Handle_Recv_Msg();
+
+    //样本分析
+    void on_Action_SampleAnalysis(bool bBool);
+
+    //列表回顾
+    void on_Action_ListReview(bool bBool);
+
+    //质控
+    void on_Action_QC(bool bBool);
+
+    //设置
+    void on_Action_Set(bool bBool);
+
+    //注销
+    void on_Action_Logout(bool bBool);
+
+    //关闭
+    void on_Action_Close(bool bBool);
+
+    //上一记录
+    void on_Last_Record();
+
+    //下一记录
+    void on_Next_Record();
+
+    //启动分析
+    void on_Start_Analysis();
+
+    //打印
+    void on_Print();
+
+    //样本信息输入
+    void on_Sample_Info_Input();
+
 
 
 private:
@@ -40,12 +89,20 @@ public:
 
     //串口设备
     QSerialPort *m_ptSerialPort;
+    //串口-工具栏
+    Serial_ToolBar *m_ptSerial_ToolBar;
+    //菜单-工具栏
+    QToolBar *m_ptFuncBar;
+
 
     //串口配置窗口
-    SerialConfig *m_ptSerialConfig;
+ //   SerialConfig *m_ptSerialConfig;
 
 private slots:
     void on_pushButton_Send_clicked();
+
+
+
 };
 
 #endif // MAINWINDOW_H

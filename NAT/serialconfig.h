@@ -17,11 +17,11 @@ class SerialConfig : public QDialog
     Q_OBJECT
 
 public:
-    struct SerialParam
+    typedef struct
     {
         //端口
-        QString strPortName;    //端口名
-        QString strPortDes;     //端口描述
+        QStringList strListPortName;    //端口
+        QStringList stListrPortDes;     //端口描述
         //波特率
         qint32 lBaudRate;
         QString strBaudRate;
@@ -37,7 +37,8 @@ public:
         //控制流
         QSerialPort::FlowControl flowControl;
         QString stringFlowControl;
-    };
+
+    }SerialParam_t;
 
 public:
     explicit SerialConfig(QWidget *parent = nullptr);
@@ -49,14 +50,14 @@ public:
 
 public:
     QSerialPort* m_ptSerialPort;
-    struct SerialParam m_tSerialParam;
+    SerialParam_t m_tSerialParam;
 
 private slots:
-    void on_pushButton_Open_clicked();
+//    void on_pushButton_Open_clicked();
 
-    void on_pushButton_Close_clicked();
+//    void on_pushButton_Close_clicked();
 
-    void on_comboBox_Port_currentIndexChanged(int index);
+ //   void on_comboBox_Port_currentIndexChanged(int index);
 
     void on_comboBox_Baud_currentIndexChanged(int index);
 
@@ -67,6 +68,8 @@ private slots:
     void on_comboBox_StopBit_currentIndexChanged(int index);
 
     void on_comboBox_FlowCtrl_currentIndexChanged(int index);
+
+    void on_pushButton_Sure_clicked();
 
 private:
     Ui::SerialConfig *ui;

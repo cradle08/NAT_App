@@ -22,8 +22,8 @@ SerialConfig::SerialConfig(QWidget *parent, QSerialPort* ptSerialPort) :
     Init_SerialPort_Param();
 
     //按键初始状态
-    ui->pushButton_Open->setEnabled(true);
-    ui->pushButton_Close->setEnabled(false);
+//    ui->pushButton_Open->setEnabled(true);
+//    ui->pushButton_Close->setEnabled(false);
 }
 
 
@@ -45,16 +45,27 @@ SerialConfig::~SerialConfig()
 void SerialConfig::Init_SerialPort_Param()
 {
     //端口
+//    const auto infos = QSerialPortInfo::availablePorts();
+//    for(const QSerialPortInfo &info : infos)
+//    {
+//        QString strPortName_Des = info.portName() + QString(" ") + info.description();
+//        ui->comboBox_Port->addItem(strPortName_Des, info.portName());
+//        qDebug()<<"strPortName_Des: "<<strPortName_Des;
+//    }
+//    m_tSerialParam.strPortName = ui->comboBox_Port->itemData(ui->comboBox_Port->currentIndex()).toString();  //保留最后一个Port name des
+//    m_tSerialParam.strPortDes = ui->comboBox_Port->currentText();
+//    qDebug()<<"strPortName: "<<m_tSerialParam.strPortName<<" "<<"Des "<<m_tSerialParam.strPortDes;
+
+    uint16_t usIndex = 0;
     const auto infos = QSerialPortInfo::availablePorts();
     for(const QSerialPortInfo &info : infos)
     {
-        QString strPortName_Des = info.portName() + QString(" ") + info.description();
-        ui->comboBox_Port->addItem(strPortName_Des, info.portName());
-        qDebug()<<"strPortName_Des: "<<strPortName_Des;
+        m_tSerialParam.strListPortName.append(info.portName());
+        m_tSerialParam.stListrPortDes.append(info.description());
+        qDebug()<<"strPortName Des: "<<m_tSerialParam.strListPortName.at(usIndex)<<"  "\
+            << m_tSerialParam.stListrPortDes.at(usIndex);
+        usIndex++;
     }
-    m_tSerialParam.strPortName = ui->comboBox_Port->itemData(ui->comboBox_Port->currentIndex()).toString();  //保留最后一个Port name des
-    m_tSerialParam.strPortDes = ui->comboBox_Port->currentText();
-    qDebug()<<"strPortName: "<<m_tSerialParam.strPortName<<" "<<"Des "<<m_tSerialParam.strPortDes;
 
     //波特率
     ui->comboBox_Baud->addItem(QString("9600"), QSerialPort::Baud9600);
@@ -111,12 +122,12 @@ void SerialConfig::Init_SerialPort_Param()
   * @param
   * @retval
   */
-void SerialConfig::on_comboBox_Port_currentIndexChanged(int index)
-{
-    m_tSerialParam.strPortName = ui->comboBox_Port->itemData(ui->comboBox_Port->currentIndex()).toString();  //保留最后一个Port name des
-    m_tSerialParam.strPortDes = ui->comboBox_Port->currentText();
-    qDebug()<<"strPortName: "<<m_tSerialParam.strPortName<<" "<<"Des "<<m_tSerialParam.strPortDes;
-}
+//void SerialConfig::on_comboBox_Port_currentIndexChanged(int index)
+//{
+//    m_tSerialParam.strPortName = ui->comboBox_Port->itemData(ui->comboBox_Port->currentIndex()).toString();  //保留最后一个Port name des
+//    m_tSerialParam.strPortDes = ui->comboBox_Port->currentText();
+//    qDebug()<<"strPortName: "<<m_tSerialParam.strPortName<<" "<<"Des "<<m_tSerialParam.strPortDes;
+//}
 
 
 
@@ -200,27 +211,27 @@ void SerialConfig::on_comboBox_FlowCtrl_currentIndexChanged(int index)
   * @param
   * @retval
   */
-void SerialConfig::on_pushButton_Open_clicked()
-{
-    m_ptSerialPort->setPortName(m_tSerialParam.strPortName);
-    m_ptSerialPort->setBaudRate(m_tSerialParam.lBaudRate);
-    m_ptSerialPort->setDataBits(m_tSerialParam.dataBits);
-    m_ptSerialPort->setParity(m_tSerialParam.parity);
-    m_ptSerialPort->setStopBits(m_tSerialParam.stopBits);
-    m_ptSerialPort->setFlowControl(m_tSerialParam.flowControl);
+//void SerialConfig::on_pushButton_Open_clicked()
+//{
+//    m_ptSerialPort->setPortName(m_tSerialParam.strPortName);
+//    m_ptSerialPort->setBaudRate(m_tSerialParam.lBaudRate);
+//    m_ptSerialPort->setDataBits(m_tSerialParam.dataBits);
+//    m_ptSerialPort->setParity(m_tSerialParam.parity);
+//    m_ptSerialPort->setStopBits(m_tSerialParam.stopBits);
+//    m_ptSerialPort->setFlowControl(m_tSerialParam.flowControl);
 
-    if (m_ptSerialPort->open(QIODevice::ReadWrite)) {
+//    if (m_ptSerialPort->open(QIODevice::ReadWrite)) {
 
-        qDebug()<<"Open Serial Success";
-        ui->pushButton_Open->setEnabled(false);
-        ui->pushButton_Close->setEnabled(true);
-    } else {
-        QMessageBox::critical(this, tr("Error"), m_ptSerialPort->errorString());
-        ui->pushButton_Open->setEnabled(true);
-        ui->pushButton_Close->setEnabled(false);
-        qDebug()<<"Open Serial Failure";
-    }
-}
+//        qDebug()<<"Open Serial Success";
+//        ui->pushButton_Open->setEnabled(false);
+//        ui->pushButton_Close->setEnabled(true);
+//    } else {
+//        QMessageBox::critical(this, tr("Error"), m_ptSerialPort->errorString());
+//        ui->pushButton_Open->setEnabled(true);
+//        ui->pushButton_Close->setEnabled(false);
+//        qDebug()<<"Open Serial Failure";
+//    }
+//}
 
 
 
@@ -229,38 +240,58 @@ void SerialConfig::on_pushButton_Open_clicked()
   * @param
   * @retval
   */
-void SerialConfig::on_pushButton_Close_clicked()
+//void SerialConfig::on_pushButton_Close_clicked()
+//{
+//    ui->pushButton_Open->setEnabled(true);
+//    ui->pushButton_Close->setEnabled(false);
+//}
+
+
+
+
+
+/**
+  * @brief  确定当前参数
+  * @param
+  * @retval
+  */
+void SerialConfig::on_pushButton_Sure_clicked()
 {
-    ui->pushButton_Open->setEnabled(true);
-    ui->pushButton_Close->setEnabled(false);
+    /* 更新串口数据 */
+    //波特率
+    uint32_t index = ui->comboBox_Baud->currentIndex();
+    m_tSerialParam.lBaudRate = static_cast<QSerialPort::BaudRate>(index);
+    m_tSerialParam.strBaudRate = QString::number(m_tSerialParam.lBaudRate);
+    qDebug()<<"Baud: "<<m_tSerialParam.lBaudRate<<" "<<m_tSerialParam.strBaudRate;
+
+    //数据位
+    index = ui->comboBox_Data->currentIndex();
+    m_tSerialParam.dataBits = static_cast<QSerialPort::DataBits>(index);
+    m_tSerialParam.strDateBits =ui->comboBox_Data->currentText();
+    qDebug()<<"DateBits: "<<m_tSerialParam.dataBits<<" "<<m_tSerialParam.strDateBits;
+
+    //检验位
+    index = ui->comboBox_Parity->currentIndex();
+    m_tSerialParam.parity = static_cast<QSerialPort::Parity>(index);
+    m_tSerialParam.stringParity =ui->comboBox_Parity->currentText();
+    qDebug()<<"Parity: "<<m_tSerialParam.parity<<" "<<m_tSerialParam.stringParity;
+
+    //停止位
+    index = ui->comboBox_StopBit->currentIndex();
+    m_tSerialParam.stopBits = static_cast<QSerialPort::StopBits>(index);
+    m_tSerialParam.stringStopBits =ui->comboBox_StopBit->currentText();
+    qDebug()<<"stopBit: "<<m_tSerialParam.stopBits<<" "<<m_tSerialParam.stringStopBits;
+
+    //流控
+    index = ui->comboBox_FlowCtrl->currentIndex();
+    m_tSerialParam.flowControl = static_cast<QSerialPort::FlowControl>(index);
+    m_tSerialParam.stringFlowControl =ui->comboBox_FlowCtrl->currentText();
+    qDebug()<<"FlowCtrl: "<<m_tSerialParam.flowControl<<" "<<m_tSerialParam.stringFlowControl;
 
 
+    /* 关闭窗口 */
+    close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
