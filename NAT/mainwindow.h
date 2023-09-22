@@ -39,7 +39,8 @@ public:
     //发送串口数据
     void Send_Serial_Data();
 
-
+    //默认流程初始化
+    void Define_Process_Init();
 
  public slots:
 //    //打开串口参数设置界面

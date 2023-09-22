@@ -9,19 +9,31 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ctrlflow_graphicsview.cpp \
     main.cpp \
     login.cpp \
     mainwindow.cpp \
     serial_protocolmsg.cpp \
     serial_toolbar.cpp \
-    serialconfig.cpp
+    serialconfig.cpp \
+    workflow_end.cpp \
+    workflow_goto.cpp \
+    workflow_start.cpp \
+    workflow_temp.cpp \
+    workflow_tempdata.cpp
 
 HEADERS += \
+    ctrlflow_graphicsview.h \
     login.h \
     mainwindow.h \
     serial_protocolmsg.h \
     serial_toolbar.h \
-    serialconfig.h
+    serialconfig.h \
+    workflow_end.h \
+    workflow_goto.h \
+    workflow_start.h \
+    workflow_temp.h \
+    workflow_tempdata.h
 
 FORMS += \
     login.ui \

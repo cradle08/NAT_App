@@ -2,6 +2,11 @@
 #include "ui_mainwindow.h"
 
 #include "serial_toolbar.h"
+#include "workflow_start.h"
+#include "workflow_temp.h"
+#include "workflow_tempdata.h"
+#include "workflow_goto.h"
+#include "workflow_end.h"
 
 
 
@@ -119,6 +124,13 @@ MainWindow::MainWindow(QWidget *parent) :
 //    QLabel *ptLabel_Port = new QLabel(ui->toolBar_Comm);
 //    ptLabel_Port->setText(QString("Port"));
 // //   QComboBox *ptComboBox = new QComboBox(ui->toolBar_Comm);
+
+
+   //默认流程
+   Define_Process_Init();
+
+
+
 
 }
 
@@ -311,7 +323,46 @@ void MainWindow::Send_Serial_Data()
 
 
 
+/**
+  * @brief 默认流程初始化
+  * @param
+  * @retval
+  */
+void MainWindow::Define_Process_Init()
+{
+    QHBoxLayout *ptLayout = new QHBoxLayout(ui->scrollArea_WorkFlow);
 
+//    QGraphicsView *ptWorkFlow_00 = new WorkFlow_Start();
+    QGraphicsView *ptWorkFlow_01 = new WorkFlow_Temp();
+    QGraphicsView *ptWorkFlow_02 = new WorkFlow_Temp();
+    QGraphicsView *ptWorkFlow_03 = new WorkFlow_TempData();
+    QGraphicsView *ptWorkFlow_04 = new WorkFlow_Goto();
+    QGraphicsView *ptWorkFlow_05 = new WorkFlow_Temp();
+    QGraphicsView *ptWorkFlow_06 = new WorkFlow_TempData();
+    QGraphicsView *ptWorkFlow_07 = new WorkFlow_Temp();
+    QGraphicsView *ptWorkFlow_08 = new WorkFlow_End();
+
+
+//    ptLayout->addWidget(ptWorkFlow_00);
+    ptLayout->addWidget(ptWorkFlow_01);
+    ptLayout->addWidget(ptWorkFlow_02);
+    ptLayout->addWidget(ptWorkFlow_03);
+    ptLayout->addWidget(ptWorkFlow_04);
+    ptLayout->addWidget(ptWorkFlow_05);
+    ptLayout->addWidget(ptWorkFlow_06);
+    ptLayout->addWidget(ptWorkFlow_07);
+    ptLayout->addWidget(ptWorkFlow_08);
+
+    ui->scrollArea_WorkFlow->setLayout(ptLayout);
+
+//    Module_Temp *ptModule_Temp = new Module_Temp();
+
+//    QHBoxLayout *ptLayout = new QHBoxLayout();
+//    ptLayout->addWidget(ptModule_Start);
+//    ptLayout->addWidget(ptModule_Temp);
+
+
+}
 
 
 /**
