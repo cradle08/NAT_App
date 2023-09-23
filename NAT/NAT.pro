@@ -16,6 +16,7 @@ SOURCES += \
     serial_protocolmsg.cpp \
     serial_toolbar.cpp \
     serialconfig.cpp \
+    workflow.cpp \
     workflow_end.cpp \
     workflow_goto.cpp \
     workflow_start.cpp \
@@ -24,11 +25,13 @@ SOURCES += \
 
 HEADERS += \
     ctrlflow_graphicsview.h \
+    global_define.h \
     login.h \
     mainwindow.h \
     serial_protocolmsg.h \
     serial_toolbar.h \
     serialconfig.h \
+    workflow.h \
     workflow_end.h \
     workflow_goto.h \
     workflow_start.h \

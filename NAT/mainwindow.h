@@ -9,8 +9,10 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QToolBar>
+#include <QVector>
+#include <QGraphicsView>
 
-
+#include "workflow.h"
 #include "serial_toolbar.h"
 
 
@@ -83,19 +85,6 @@ public:
 
 
 
-private:
-    Ui::MainWindow *ui;
-
-public:
-
-    //串口设备
-    QSerialPort *m_ptSerialPort;
-    //串口-工具栏
-    Serial_ToolBar *m_ptSerial_ToolBar;
-    //菜单-工具栏
-    QToolBar *m_ptFuncBar;
-
-
     //串口配置窗口
  //   SerialConfig *m_ptSerialConfig;
 
@@ -103,7 +92,23 @@ private slots:
     void on_pushButton_Send_clicked();
 
 
+private:
+    Ui::MainWindow *ui;
+
+public:
+    QSerialPort *m_ptSerialPort; //串口设备
+    Serial_ToolBar *m_ptSerial_ToolBar; //串口-工具栏
+    QToolBar *m_ptFuncBar; //菜单-工具栏
+    QVector<WorkFlow*> *m_ptVector_WorkFlow;
 
 };
 
 #endif // MAINWINDOW_H
+
+
+
+
+
+
+
+

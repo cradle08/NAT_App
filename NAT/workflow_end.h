@@ -12,22 +12,21 @@
 #include <QBrush>
 #include <QColor>
 
+#include "global_define.h"
+#include "workflow.h"
 
 
-class WorkFlow_End : public QGraphicsView
+class WorkFlow_End : public WorkFlow
 {
 public:
 //    WorkFlow_End();
-    explicit WorkFlow_End(QGraphicsView *parent = nullptr);
-
-    //设置属性
-    void Set_Item_Attribute(QGraphicsItem *ptItem);
-
+    explicit WorkFlow_End(uint16_t usIndex = 0,QVector<WorkFlow*> *ptWorkFlow = nullptr);
+    ~WorkFlow_End();
 
 
 public:
     QGraphicsTextItem *m_ptItem_Text;
-    QGraphicsScene *m_ptScene;
+//    QGraphicsScene *m_ptScene;
 
 
 };

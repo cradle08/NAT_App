@@ -127,6 +127,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
    //默认流程
+   m_ptVector_WorkFlow = new QVector<WorkFlow*>;
    Define_Process_Init();
 
 
@@ -139,6 +140,9 @@ MainWindow::~MainWindow()
     delete ui;
     if(nullptr != m_ptSerialPort)       delete m_ptSerialPort;
     if(nullptr != m_ptSerial_ToolBar)   delete m_ptSerial_ToolBar;
+    if(nullptr != m_ptFuncBar)          delete m_ptFuncBar;
+    if(nullptr != m_ptVector_WorkFlow)  delete m_ptVector_WorkFlow;
+    if(nullptr != m_ptFuncBar)          delete m_ptFuncBar;
     if(nullptr != m_ptFuncBar)          delete m_ptFuncBar;
 }
 
@@ -331,19 +335,29 @@ void MainWindow::Send_Serial_Data()
 void MainWindow::Define_Process_Init()
 {
     QHBoxLayout *ptLayout = new QHBoxLayout(ui->scrollArea_WorkFlow);
-
-//    QGraphicsView *ptWorkFlow_00 = new WorkFlow_Start();
-    QGraphicsView *ptWorkFlow_01 = new WorkFlow_Temp();
-    QGraphicsView *ptWorkFlow_02 = new WorkFlow_Temp();
-    QGraphicsView *ptWorkFlow_03 = new WorkFlow_TempData();
-    QGraphicsView *ptWorkFlow_04 = new WorkFlow_Goto();
-    QGraphicsView *ptWorkFlow_05 = new WorkFlow_Temp();
-    QGraphicsView *ptWorkFlow_06 = new WorkFlow_TempData();
-    QGraphicsView *ptWorkFlow_07 = new WorkFlow_Temp();
-    QGraphicsView *ptWorkFlow_08 = new WorkFlow_End();
+    ptLayout->setSpacing(0);
 
 
-//    ptLayout->addWidget(ptWorkFlow_00);
+    WorkFlow *ptWorkFlow_00 = new WorkFlow_Temp();
+    WorkFlow *ptWorkFlow_01 = new WorkFlow_Temp();
+    WorkFlow *ptWorkFlow_02 = new WorkFlow_TempData();
+    WorkFlow *ptWorkFlow_03 = new WorkFlow_Goto();
+    WorkFlow *ptWorkFlow_04 = new WorkFlow_Temp();
+    WorkFlow *ptWorkFlow_05 = new WorkFlow_TempData();
+    WorkFlow *ptWorkFlow_06 = new WorkFlow_Temp();
+    WorkFlow *ptWorkFlow_07 = new WorkFlow_End();
+
+    m_ptVector_WorkFlow->append(ptWorkFlow_00);
+    m_ptVector_WorkFlow->append(ptWorkFlow_01);
+    m_ptVector_WorkFlow->append(ptWorkFlow_02);
+    m_ptVector_WorkFlow->append(ptWorkFlow_03);
+    m_ptVector_WorkFlow->append(ptWorkFlow_04);
+    m_ptVector_WorkFlow->append(ptWorkFlow_05);
+    m_ptVector_WorkFlow->append(ptWorkFlow_06);
+    m_ptVector_WorkFlow->append(ptWorkFlow_07);
+
+
+    ptLayout->addWidget(ptWorkFlow_00);
     ptLayout->addWidget(ptWorkFlow_01);
     ptLayout->addWidget(ptWorkFlow_02);
     ptLayout->addWidget(ptWorkFlow_03);
@@ -351,9 +365,10 @@ void MainWindow::Define_Process_Init()
     ptLayout->addWidget(ptWorkFlow_05);
     ptLayout->addWidget(ptWorkFlow_06);
     ptLayout->addWidget(ptWorkFlow_07);
-    ptLayout->addWidget(ptWorkFlow_08);
 
-    ui->scrollArea_WorkFlow->setLayout(ptLayout);
+
+ //   ui->scrollArea_WorkFlow->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->scrollAreaWidgetContents->setLayout(ptLayout);
 
 //    Module_Temp *ptModule_Temp = new Module_Temp();
 

@@ -103,10 +103,19 @@
                  <property name="geometry">
                   <rect>
                    <x>0</x>
-                   <y>10</y>
-                   <width>901</width>
+                   <y>0</y>
+                   <width>911</width>
                    <height>300</height>
                   </rect>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <property name="lineWidth">
+                  <number>0</number>
                  </property>
                  <property name="widgetResizable">
                   <bool>true</bool>
@@ -116,7 +125,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>899</width>
+                    <width>909</width>
                     <height>298</height>
                    </rect>
                   </property>
@@ -132,6 +141,9 @@
                   </rect>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
                   <item>
                    <widget class="QPushButton" name="pushButton_2">
                     <property name="text">
@@ -140,9 +152,9 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label">
+                   <widget class="QPushButton" name="pushButton_3">
                     <property name="text">
-                     <string>TextLabel</string>
+                     <string>PushButton</string>
                     </property>
                    </widget>
                   </item>
